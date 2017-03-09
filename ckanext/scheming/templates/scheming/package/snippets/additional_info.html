@@ -33,14 +33,6 @@
             field=field, data=pkg_dict, schema=schema -%}</td>
         </tr>
       {% endif %}
-      {% if pkg_dict.extras %}
-        {% for extra in pkg_dict.extras %}
-        <tr>
-            <th scope="row" class="dataset-label">{{ extra.key }}</th>
-            <td class="dataset-details">{{ extra.value }}</td>
-        </tr>
-        {% endfor %}
-      {% endif %}
     {%- endif -%}
   {%- endfor -%}
   {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
@@ -48,5 +40,17 @@
       <th scope="row" class="dataset-label">{{ _("State") }}</th>
       <td class="dataset-details">{{ _(pkg_dict.state) }}</td>
     </tr>
+  {% endif %}
+  {% if pkg_dict.extras %}
+    {% for extra in pkg_dict.extras %}
+    <tr>
+      <th scope="row" class="dataset-label">
+        {{ extra.key }}
+      </th>
+      <td class="dataset-details">
+        {{ extra.value }}
+      </td>
+    </tr>
+    {% endfor %}
   {% endif %}
 {% endblock %}
