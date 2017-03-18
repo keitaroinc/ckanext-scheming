@@ -34,7 +34,7 @@
   {% block package_metadata_fields_custom %}
     {% block custom_fields %}
     {% if h.scheming_show_custom_extras() %}
-    {% set extras = h.scheming_exclude_extras_from_form(data.extras) %}
+    {% set extras = h.scheming_exclude_extras_from_form(data.extras, h.scheming_get_dataset_schema(dataset_type)) %}
       {% snippet 'snippets/custom_form_fields.html', extras=extras, errors=errors, limit=3 %}
     {% endif %}
     {% endblock %}

@@ -344,9 +344,12 @@ def scheming_get_excluded_extras_from_form():
     return tk.aslist(config.get('ckanext.scheming.excluded_extras_from_form'))
 
 
-def scheming_exclude_extras_from_form(extras):
+def scheming_exclude_extras_from_form(extras, schema):
     excluded_extras = scheming_get_excluded_extras_from_form()
-    return [extra for extra in extras if extra['key'] not in excluded_extras]
+    schema_extras = [field['field_name'] for field in schema['dataset_fields']]
+    extras = [extra for extra in extras if extra['key'] not in excluded_extras]
+    extras = [extra for extra in extras if extra['key'] not in schema_extras]
+    return extras
 
 
 def scheming_show_custom_extras():

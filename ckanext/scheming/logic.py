@@ -79,13 +79,14 @@ def scheming_organization_schema_show(context, data_dict):
     return s
 
 
-def package_update(context, data_dict):
+def scheming_package_update(context, data_dict):
     excluded_extras = h.scheming_get_excluded_extras_from_form()
+    data_dict_extras = [extra['key'] for extra in data_dict['extras']]
     package = tk.get_action('package_show')(context, {'id': data_dict['id']})
+    data_dict.pop('_duplicate', '')
     extras = []
     for extra in package['extras']:
-        if extra['key'] in excluded_extras:
+        if extra['key'] in excluded_extras and extra['key'] not in data_dict_extras:
             extras.append(extra)
     data_dict['extras'].extend(extras)
-    package = l.action.update.package_update(context, data_dict)
-    return package
+    return data_dict

@@ -34,7 +34,7 @@ from ckanext.scheming.logic import (
     scheming_group_schema_show,
     scheming_organization_schema_list,
     scheming_organization_schema_show,
-    package_update
+    scheming_package_update
 )
 from ckanext.scheming.converters import (
     convert_from_extras_group,
@@ -266,7 +266,7 @@ class SchemingDatasetsPlugin(p.SingletonPlugin, DefaultDatasetForm,
         return {
             'scheming_dataset_schema_list': scheming_dataset_schema_list,
             'scheming_dataset_schema_show': scheming_dataset_schema_show,
-            'package_update': package_update
+            'scheming_package_update': scheming_package_update
         }
 
 
