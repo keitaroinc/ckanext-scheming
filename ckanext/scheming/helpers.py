@@ -7,6 +7,8 @@ from pylons import config
 from pylons.i18n import gettext
 
 from ckanapi import LocalCKAN, NotFound, NotAuthorized
+from ckan.plugins import toolkit as tk
+
 
 def lang():
     # access this function late in case ckan
@@ -332,3 +334,20 @@ def scheming_convert_str_to_dict(value):
         return json.loads(value)
     except ValueError:
         return 'JSON cannot be decoded'
+
+
+def scheming_get_excluded_extras_from_view():
+    return tk.aslist(config.get('ckanext.scheming.excluded_extras_from_view'))
+
+
+def scheming_get_excluded_extras_from_form():
+    return tk.aslist(config.get('ckanext.scheming.excluded_extras_from_form'))
+
+
+def scheming_exclude_extras_from_form(extras):
+    excluded_extras = scheming_get_excluded_extras_from_form()
+    return [extra for extra in extras if extra['key'] not in excluded_extras]
+
+
+def scheming_show_custom_extras():
+    return tk.asbool(config.get('ckanext.scheming.show_custom_extras'))

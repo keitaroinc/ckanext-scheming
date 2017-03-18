@@ -6,6 +6,11 @@ from ckanext.scheming.helpers import (
     scheming_organization_schemas, scheming_get_organization_schema,
     )
 
+from ckanext.scheming import helpers as h
+from ckan.plugins import toolkit as tk
+from ckan import logic as l
+
+
 @side_effect_free
 def scheming_dataset_schema_list(context, data_dict):
     '''
@@ -74,6 +79,13 @@ def scheming_organization_schema_show(context, data_dict):
     return s
 
 
-
-
-
+def package_update(context, data_dict):
+    excluded_extras = h.scheming_get_excluded_extras_from_form()
+    package = tk.get_action('package_show')(context, {'id': data_dict['id']})
+    extras = []
+    for extra in package['extras']:
+        if extra['key'] in excluded_extras:
+            extras.append(extra)
+    data_dict['extras'].extend(extras)
+    package = l.action.update.package_update(context, data_dict)
+    return package

@@ -33,7 +33,8 @@ from ckanext.scheming.logic import (
     scheming_group_schema_list,
     scheming_group_schema_show,
     scheming_organization_schema_list,
-    scheming_organization_schema_show
+    scheming_organization_schema_show,
+    package_update
 )
 from ckanext.scheming.converters import (
     convert_from_extras_group,
@@ -92,7 +93,11 @@ class _SchemingMixin(object):
             'scheming_get_timezones': helpers.scheming_get_timezones,
             'scheming_datetime_to_tz': helpers.scheming_datetime_to_tz,
             'scheming_datastore_choices': helpers.scheming_datastore_choices,
-            'scheming_convert_str_to_dict': helpers.scheming_convert_str_to_dict
+            'scheming_convert_str_to_dict': helpers.scheming_convert_str_to_dict,
+            'scheming_get_excluded_extras_from_view': helpers.scheming_get_excluded_extras_from_view,
+            'scheming_get_excluded_extras_from_form': helpers.scheming_get_excluded_extras_from_form,
+            'scheming_exclude_extras_from_form': helpers.scheming_exclude_extras_from_form,
+            'scheming_show_custom_extras': helpers.scheming_show_custom_extras
             }
 
     def get_validators(self):
@@ -261,6 +266,7 @@ class SchemingDatasetsPlugin(p.SingletonPlugin, DefaultDatasetForm,
         return {
             'scheming_dataset_schema_list': scheming_dataset_schema_list,
             'scheming_dataset_schema_show': scheming_dataset_schema_show,
+            'package_update': package_update
         }
 
 

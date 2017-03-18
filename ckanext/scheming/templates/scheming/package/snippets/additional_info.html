@@ -10,6 +10,8 @@
     'owner_org',
     ] -%}
 
+{% set exclude_extras = h.scheming_get_excluded_extras_from_view() %}
+
 {% block package_additional_info %}
   {%- for field in schema.dataset_fields -%}
     {%- if field.field_name not in exclude_fields
@@ -24,24 +26,21 @@
       </tr>
     {%- endif -%}
   {%- endfor -%}
-    {% for extra in h.sorted_extras(pkg_dict.extras) %}
-      {% set key, value = extra %}
-        {% if  key in ('categories', 'subcategories') %}
-              <tr rel="dc:relation" resource="_:extra{{ i }}">
-                <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
-                <td class="dataset-details" property="rdf:value">{{ h.output_group_links(value)|safe }}</td>
-              </tr>
-        {% elif key not in h.get_custom_schema_fields() and not extra.deleted %}
-              <tr rel="dc:relation" resource="_:extra{{ i }}">
-                <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
-                <td class="dataset-details" property="rdf:value">{{ value }}</td>
-              </tr>
-        {% endif %}
-      {% endfor %}
   {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("State") }}</th>
       <td class="dataset-details">{{ _(pkg_dict.state) }}</td>
     </tr>
   {% endif %}
+  {% if pkg_dict.extras and h.scheming_show_custom_extras() %}
+    {% for extra in pkg_dict.extras %}
+    {% if extra.key not in exclude_extras %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ extra.key }}</th>
+      <td class="dataset-details">{{ extra.value }}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+
 {% endblock %}
