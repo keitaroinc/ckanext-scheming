@@ -26,16 +26,18 @@
         {% endfor %}
       {% elif field.field_name == 'temporal_coverage' %}
         {% set tcdates = h.scheming_convert_str_to_dict(pkg_dict.temporal_coverage) %}
-        <tr>
-            <th scope="row" class="dataset-label">{{ _('Zeitrahmen von') }}</th>
-            {% set date = h.scheming_localize_date(tcdates.temporal_coverage_from) %}
-            <td>{{ date }}</td>
-          </tr>
-        <tr>
-            <th scope="row" class="dataset-label">{{ _('Zeitrahmen bis') }}</th>
-            {% set date = h.scheming_localize_date(tcdates.temporal_coverage_to) %}
-            <td>{{ date }}</td>
-          </tr>      
+        % if tcdates.temporal_coverage_from %}
+          <tr>
+              <th scope="row" class="dataset-label">{{ _('Zeitrahmen von') }}</th>
+              {% set date = h.scheming_localize_date(tcdates.temporal_coverage_from) %}
+              <td>{{ date }}</td>
+            </tr>
+          <tr>
+              <th scope="row" class="dataset-label">{{ _('Zeitrahmen bis') }}</th>
+              {% set date = h.scheming_localize_date(tcdates.temporal_coverage_to) %}
+              <td>{{ date }}</td>
+            </tr>
+          {% endif %}
       {% else %}
         <tr>
           <th scope="row" class="dataset-label">{{
