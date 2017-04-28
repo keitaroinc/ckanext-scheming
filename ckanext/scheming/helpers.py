@@ -340,9 +340,9 @@ def scheming_localize_date(date):
         else:
             div = '/'
         if date[2] not in ['/', '.', '-']:
-            localized_date = date[8:]+div+date[5:7]+div+date[:4]
+            localized_date = date[8:10]+div+date[5:7]+div+date[:4]
         else:
-            localized_date = date[:2]+div+date[3:5]+div+date[6:]
+            localized_date = date[:2]+div+date[3:5]+div+date[6:10]
         return localized_date
     else:
         return ''
