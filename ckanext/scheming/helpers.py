@@ -332,3 +332,17 @@ def scheming_convert_str_to_dict(value):
         return json.loads(value)
     except ValueError:
         return 'JSON cannot be decoded'
+
+def scheming_localize_date(date):
+    if date:
+        if lang() == 'de':
+            div = '.'
+        else:
+            div = '/'
+        if date[2] not in ['/', '.', '-']:
+            localized_date = date[8:]+div+date[5:7]+div+date[:4]
+        else:
+            localized_date = date[:2]+div+date[3:5]+div+date[6:]
+        return localized_date
+    else:
+        return ''

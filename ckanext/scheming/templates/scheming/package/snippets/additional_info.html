@@ -20,18 +20,21 @@
           <tr>
             <th scope="row" class="dataset-label">{{
           h.scheming_language_text(dates[n].role|capitalize) }}</th>
-            <td>{{ dates[n].date }}</td>
+            {% set date = h.scheming_localize_date(dates[n].date) %}
+            <td>{{ date }}</td>
           </tr>
         {% endfor %}
       {% elif field.field_name == 'temporal_coverage' %}
         {% set tcdates = h.scheming_convert_str_to_dict(pkg_dict.temporal_coverage) %}
         <tr>
             <th scope="row" class="dataset-label">{{ _('Zeitrahmen von') }}</th>
-            <td>{{ tcdates.temporal_coverage_from }}</td>
+            {% set date = h.scheming_localize_date(tcdates.temporal_coverage_from) %}
+            <td>{{ date }}</td>
           </tr>
         <tr>
             <th scope="row" class="dataset-label">{{ _('Zeitrahmen bis') }}</th>
-            <td>{{ tcdates.temporal_coverage_to }}</td>
+            {% set date = h.scheming_localize_date(tcdates.temporal_coverage_to) %}
+            <td>{{ date }}</td>
           </tr>      
       {% else %}
         <tr>
