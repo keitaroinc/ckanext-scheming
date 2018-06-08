@@ -71,9 +71,9 @@ class _SchemingMixin(object):
     _validators_loaded = False
 
     def get_helpers(self):
-        if _SchemingMixin._helpers_loaded:
-            return {}
-        _SchemingMixin._helpers_loaded = True
+        # if _SchemingMixin._helpers_loaded:
+        #     return {}
+        # _SchemingMixin._helpers_loaded = True
         return {
             'scheming_language_text': helpers.scheming_language_text,
             'scheming_choices_label': helpers.scheming_choices_label,
@@ -98,9 +98,9 @@ class _SchemingMixin(object):
             }
 
     def get_validators(self):
-        if _SchemingMixin._validators_loaded:
-            return {}
-        _SchemingMixin._validators_loaded = True
+        # if _SchemingMixin._validators_loaded:
+        #     return {}
+        # _SchemingMixin._validators_loaded = True
         return {
             'scheming_choices': scheming_choices,
             'scheming_required': scheming_required,
@@ -115,9 +115,9 @@ class _SchemingMixin(object):
             }
 
     def _add_template_directory(self, config):
-        if _SchemingMixin._template_dir_added:
-            return
-        _SchemingMixin._template_dir_added = True
+        # if _SchemingMixin._template_dir_added:
+        #     return
+        # _SchemingMixin._template_dir_added = True
         add_template_directory(config, 'templates')
 
     def _load_presets(self, config):
