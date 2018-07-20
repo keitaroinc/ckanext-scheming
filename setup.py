@@ -20,16 +20,27 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
-    entry_points=\
-    """
-    [ckan.plugins]
-    scheming_datasets=ckanext.scheming.plugins:SchemingDatasetsPlugin
-    scheming_groups=ckanext.scheming.plugins:SchemingGroupsPlugin
-    scheming_organizations=ckanext.scheming.plugins:SchemingOrganizationsPlugin
-    scheming_test_subclass=ckanext.scheming.tests.plugins:SchemingTestSubclass
-    scheming_test_plugin=ckanext.scheming.tests.plugins:SchemingTestSchemaPlugin
+    entry_points={
+        'ckan.plugins': [
+            'validation=ckanext.validation.plugin:ValidationPlugin'
+        ],
+        'paste.paster_command': [
+            'validation = ckanext.validation.commands:Validation'
+        ],
+        'babel.extractors': [
+            'ckan = ckan.lib.extract:extract_ckan'
+        ]
+    },
 
-    [paste.paster_command]
-    scheming=ckanext.scheming.commands:SchemingCommand
-    """,
+    # If you are changing from the default layout of your extension, you may
+    # have to change the message extractors, you can read more about babel
+    # message extraction at
+    # http://babel.pocoo.org/docs/messages/#extraction-method-mapping-and-configuration
+    message_extractors={
+        'ckanext': [
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )
