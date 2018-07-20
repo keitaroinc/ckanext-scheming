@@ -22,7 +22,7 @@ msgstr ""
 #: ckanext/scheming/validation.py:42 ckanext/scheming/validation.py:102
 #, python-format
 msgid "unexpected choice \"%s\""
-msgstr "Неочекуван избор \"%s\"
+msgstr "Неочекуван избор \"%s\""
 
 #: ckanext/scheming/validation.py:87
 msgid "expecting list of strings"
@@ -55,7 +55,7 @@ msgstr "Неважечки JSON низа од знаци: {}"
 
 #: ckanext/scheming/validation.py:256
 msgid "Invalid JSON object: {}"
-msgstr "Неважечки JSON објект"
+msgstr "Неважечки JSON објект: {}"
 
 #: ckanext/scheming/validation.py:259
 msgid "Unsupported type for JSON field: {}"
