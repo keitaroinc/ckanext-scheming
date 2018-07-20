@@ -1,0 +1,142 @@
+# Albanian translations for ckanext-scheming.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the ckanext-scheming
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-scheming 1.1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-07-20 12:57+0200\n"
+"PO-Revision-Date: 2018-07-20 13:46+0200\n"
+"Language: sq\n"
+"Language-Team: sq <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.0.4\n"
+
+#: ckanext/scheming/validation.py:42 ckanext/scheming/validation.py:102
+#, python-format
+msgid "unexpected choice \"%s\""
+msgstr "zgjedhje e papritur \"% s\""
+
+#: ckanext/scheming/validation.py:87
+msgid "expecting list of strings"
+msgstr "pritet një listë personash"
+
+#: ckanext/scheming/validation.py:110
+msgid "Select at least one"
+msgstr "Zgjidh të paktën një"
+
+#: ckanext/scheming/validation.py:116 ckanext/scheming/validation.py:182
+#: ckanext/scheming/validation.py:211
+msgid "Date format incorrect"
+msgstr "Formati i datës është i pasaktë"
+
+#: ckanext/scheming/validation.py:117
+msgid "Time format incorrect"
+msgstr "Formati i kohës është i pasaktë"
+
+#: ckanext/scheming/validation.py:150
+msgid "Date is required when a time is provided"
+msgstr "Data kërkohet kur jepet një kohë"
+
+#: ckanext/scheming/validation.py:245
+msgid "Unsupported value for JSON field: {}"
+msgstr "Vlera e pambështetur për fushën JSON: {}"
+
+#: ckanext/scheming/validation.py:250
+msgid "Invalid JSON string: {}"
+msgstr "Struktura JSON e pavlefshme: {}"
+
+#: ckanext/scheming/validation.py:256
+msgid "Invalid JSON object: {}"
+msgstr "Objekti JSON i pavlefshëm: {}"
+
+#: ckanext/scheming/validation.py:259
+msgid "Unsupported type for JSON field: {}"
+msgstr "Lloji i pambështetur për fushën JSON: {}"
+
+#: ckanext/scheming/templates/scheming/form_snippets/_organization_select.html:21
+msgid "No organization"
+msgstr "No institutuion"
+
+#: ckanext/scheming/templates/scheming/form_snippets/organization.html:25
+msgid "Visibility"
+msgstr "Dukshmëria"
+
+#: ckanext/scheming/templates/scheming/form_snippets/organization.html:28
+msgid "Private"
+msgstr "Private"
+
+#: ckanext/scheming/templates/scheming/form_snippets/organization.html:28
+msgid "Public"
+msgstr "Publiku"
+
+#: ckanext/scheming/templates/scheming/group/group_form.html:20
+msgid "Are you sure you want to delete this Group?"
+msgstr "A jeni i sigurtë për fshirjën këtë grup?"
+
+#: ckanext/scheming/templates/scheming/group/group_form.html:21
+#: ckanext/scheming/templates/scheming/organization/group_form.html:22
+msgid "Delete"
+msgstr "Fshij"
+
+#: ckanext/scheming/templates/scheming/group/group_form.html:25
+msgid "Save Group"
+msgstr "Ruaj grupin"
+
+#: ckanext/scheming/templates/scheming/organization/group_form.html:21
+msgid "Are you sure you want to delete this Organization?"
+msgstr "A jeni i sigurtë për fshirjën e këtë institucion?"
+
+#: ckanext/scheming/templates/scheming/organization/group_form.html:26
+msgid "Save Organization"
+msgstr "Ruaj institucionin"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:13
+msgid "Additional Information"
+msgstr "Informata shtesë"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:17
+msgid "Field"
+msgstr "Fushë"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:18
+msgid "Value"
+msgstr "Vlera"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:24
+msgid "Last updated"
+msgstr "Përditësimi i fundit"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:25
+#: ckanext/scheming/templates/scheming/package/resource_read.html:31
+#: ckanext/scheming/templates/scheming/package/resource_read.html:37
+msgid "unknown"
+msgstr "i panjohur"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:30
+msgid "Created"
+msgstr "Krijuar"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:36
+msgid "Format"
+msgstr "Formati"
+
+#: ckanext/scheming/templates/scheming/package/resource_read.html:42
+msgid "License"
+msgstr "Licenca"
+
+#: ckanext/scheming/templates/scheming/package/snippets/additional_info.html:29
+msgid "State"
+msgstr "Gjendje"
+
+#: ckanext/scheming/templates/scheming/snippets/errors.html:6
+msgid "The form contains invalid entries:"
+msgstr "Formulari përmban shënime të pavlefshme"
