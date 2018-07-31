@@ -7,7 +7,7 @@
         'text': ''}) -%}
 {%- endif -%}
 {%- if field.get('sorted_choices', true) -%}
-    {%- set licenses = licenses|sort -%}
+    {%- set licenses = h.scheming_get_licenses()|sort -%}
 {%- endif -%}
 {%- for license_desc, license_id in licenses -%}
     {%- if license_id or not h.scheming_field_required(field) -%}

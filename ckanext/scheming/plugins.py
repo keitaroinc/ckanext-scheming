@@ -96,6 +96,7 @@ class _SchemingMixin(object):
             'scheming_datetime_to_tz': helpers.scheming_datetime_to_tz,
             'scheming_datastore_choices': helpers.scheming_datastore_choices,
             'scheming_display_json_value': helpers.scheming_display_json_value,
+            'scheming_get_licenses': helpers.scheming_get_licenses,
             }
 
     def get_validators(self):

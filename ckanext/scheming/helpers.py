@@ -7,6 +7,7 @@ from pylons import config
 from pylons.i18n import gettext
 
 from ckanapi import LocalCKAN, NotFound, NotAuthorized
+from ckan.lib import base
 
 
 def lang():
@@ -343,3 +344,7 @@ def scheming_display_json_value(value, indent=2):
         return json.dumps(value, indent=indent, sort_keys=True)
     except (TypeError, ValueError):
         return value
+
+
+def scheming_get_licenses():
+    return [('', '')] + base.model.Package.get_license_options()
