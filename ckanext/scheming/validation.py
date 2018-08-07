@@ -8,6 +8,7 @@ import ckanext.scheming.helpers as sh
 from ckantoolkit import get_validator, UnknownValidator, missing, Invalid, _
 
 from ckanext.scheming.errors import SchemingException
+from ckan.plugins import toolkit
 
 OneOf = get_validator('OneOf')
 ignore_missing = get_validator('ignore_missing')
@@ -317,3 +318,24 @@ def get_validator_or_converter(name):
     except UnknownValidator:
         pass
     raise SchemingException('validator/converter not found: %r' % name)
+
+
+@scheming_validator
+def scheming_catalog_exists(field, schema):
+    """ Only allow one catalog per organization. """
+    def validator(key, data, errors, context):
+        value = json.loads(data[key])
+        owner_org = data[('owner_org',)]
+
+        if len(value) == 1:
+            data_dict = {
+                'fq': '(owner_org:{0} AND extras_org_catalog_enabled:true)'.format(owner_org)
+            }
+            data = toolkit.get_action('package_search')(data_dict=data_dict)
+            if data['count'] > 0:
+                raise Invalid(_('There is another dataset in this organization that is marked as catalog'))
+
+    return validator
+
+
+
