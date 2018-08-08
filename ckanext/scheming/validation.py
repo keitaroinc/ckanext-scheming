@@ -326,16 +326,14 @@ def scheming_catalog_exists(field, schema):
     def validator(key, data, errors, context):
         value = json.loads(data[key])
         owner_org = data[('owner_org',)]
+        dataset_id = data.get(('id',))
 
         if len(value) == 1:
             data_dict = {
                 'fq': '(owner_org:{0} AND extras_org_catalog_enabled:true)'.format(owner_org)
             }
             data = toolkit.get_action('package_search')(data_dict=data_dict)
-            if data['count'] > 0:
+            if data['count'] > 0 and dataset_id != data['results'][0].get('id'):
                 raise Invalid(_('There is another dataset in this organization that is marked as catalog'))
 
     return validator
-
-
-
