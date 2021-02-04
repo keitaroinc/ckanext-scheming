@@ -12,16 +12,32 @@
 
 {% block package_additional_info %}
   {%- for field in schema.dataset_fields -%}
+    {% set visibility = field.visibility %}
+
     {%- if field.field_name not in exclude_fields
         and field.display_snippet is not none -%}
-      <tr>
+
+      {% if visibility == 'editor'
+         and h.check_access('package_update',{'id':pkg_dict.id}) %}
+         <tr>
         <th scope="row" class="dataset-label">{{
           h.scheming_language_text(field.label) }}</th>
         <td class="dataset-details"{%
           if field.display_property %} property="{{ field.display_property
           }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
           field=field, data=pkg_dict, schema=schema -%}</td>
-      </tr>
+        </tr>
+      {% endif %}
+      {% if not visibility %}
+         <tr>
+        <th scope="row" class="dataset-label">{{ visibility }}{{
+          h.scheming_language_text(field.label) }}</th>
+        <td class="dataset-details"{%
+          if field.display_property %} property="{{ field.display_property
+          }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=pkg_dict, schema=schema -%}</td>
+        </tr>
+      {% endif %}
     {%- endif -%}
   {%- endfor -%}
   {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
