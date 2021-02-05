@@ -24,6 +24,7 @@
       "preset_name": "tag_string_autocomplete",
       "values": {
         "validators": "ignore_missing tag_string_convert",
+        "classes": ["control-full"],
         "form_attrs": {
           "data-module": "autocomplete",
           "data-module-tags": "",
@@ -41,12 +42,20 @@
     {
       "preset_name": "resource_url_upload",
       "values": {
-        "validators": "not_empty unicode remove_whitespace",
+        "validators": "ignore_missing unicode remove_whitespace",
         "form_snippet": "upload.html",
         "form_placeholder": "http://example.com/my-data.csv",
         "upload_field": "upload",
         "upload_clear": "clear_upload",
         "upload_label": "File"
+      }
+    },
+    {
+      "preset_name": "organization_url_upload",
+      "values": {
+        "validators": "ignore_missing unicode remove_whitespace",
+        "form_snippet": "organization_upload.html",
+        "form_placeholder": "http://example.com/my-data.csv"
       }
     },
     {
@@ -108,6 +117,24 @@
         "form_snippet": "datetime_tz.html",
         "display_snippet": "datetime_tz.html",
         "validators": "scheming_isodatetime_tz convert_to_json_if_datetime"
+      }
+    },
+    {
+      "preset_name": "json_object",
+      "values": {
+        "validators": "scheming_required scheming_valid_json_object",
+        "output_validators": "scheming_load_json",
+        "form_snippet": "json.html",
+        "display_snippet": "json.html"
+      }
+    },
+    {
+      "preset_name": "multiple_text",
+      "values": {
+        "form_snippet": "multiple_text.html",
+        "display_snippet": "multiple_text.html",
+        "validators": "scheming_multiple_text",
+        "output_validators": "scheming_load_json"
       }
     }
   ]
