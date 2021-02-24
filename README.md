@@ -392,6 +392,16 @@ Set to `"true"` to sort [choices](#choices) alphabetically in [form](#form_snipp
 and [display](#display_snippet) snippets.
 
 
+#### `visibility`
+
+```yaml
+visibility: editor
+```
+
+Set this property for each field which visibility should be 
+limited only to users which have the right to edit the given resource.
+(e.g. Dataset, Group, Organization) 
+
 #### `validators`
 
 The `validators` value is a space-separated string of validator and
