@@ -319,11 +319,11 @@ This extension includes the following presets:
 * `preset: select` - validation that choice is from [choices](#choices),
   form select box and display snippet
 * `preset: multiple_checkbox` - multiple choice from [choices](#choices)
-  rendered as checkboxes in the form
+  rendered as checkboxes in the form, stored as a list of values
 * `preset: multiple_select` - multiple choice from [choices](#choices)
-  rendered as a multiple select box in the form
-* `preset: multiple_text` - repeating text field stored as a list of
-  strings
+  rendered as a multiple select box in the form, stored as a list of values
+* `preset: multiple_text` - repeating text field with add and remove
+  buttons, stored as a list of strings
 * `preset: date` - date validation and form snippet
 * `preset: datetime` date and time validation and form snippet
 * `preset: dataset_slug` - dataset slug validation and form snippet that
@@ -339,6 +339,7 @@ This extension includes the following presets:
 * `preset: json_object` - JSON based input. Only JSON objects are supported.
   The input JSON will be loaded during output (eg when loading the dataset in
   a template or via the API).
+* `preset: markdown` - markdown text area and display
 
 
 You may add your own presets by adding them to the `scheming.presets`
@@ -376,6 +377,16 @@ you added to your that aren't handled by this extension.
 The included display snippets may be found under [templates/scheming/display_snippets](ckanext/scheming/templates/scheming/display_snippets).
 
 If `display_snippet: null` is used the field will be removed from the view page.
+
+#### `display_property`
+
+```yaml
+- field_name: author
+  label: Author
+  display_property: dc:creator
+```
+
+Set a `property` attribute on dataset fields displayed as "Additional Info", useful for adding RDF markup.
 
 #### `select_size`
 
@@ -451,6 +462,10 @@ create only.
 Only if this key is supplied, its value will be shown as inline help text,
 Help text must be plain text, no markdown or HTML are allowed.
 Help text may be provided in multiple languages like [label fields](#label).
+
+#### `help_allow_html`
+
+Allow HTML inside the help text if set to `true`. Default is `false`.
 
 #### `help_inline`
 
