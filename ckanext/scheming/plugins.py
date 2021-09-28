@@ -16,6 +16,7 @@ except ImportError:
 
 import ckan.model as model
 from ckan.common import c, json
+from ckan.lib.plugins import DefaultTranslation
 from ckan.lib.navl.dictization_functions import unflatten, flatten_schema
 try:
     from ckan.lib.helpers import helper_functions as core_helper_functions
@@ -189,12 +190,13 @@ class _GroupOrganizationMixin(object):
 
 
 class SchemingDatasetsPlugin(p.SingletonPlugin, DefaultDatasetForm,
-                             _SchemingMixin):
+                             _SchemingMixin, DefaultTranslation):
     p.implements(p.IConfigurer)
     p.implements(p.ITemplateHelpers)
     p.implements(p.IDatasetForm, inherit=True)
     p.implements(p.IActions)
     p.implements(p.IValidators)
+    p.implements(p.ITranslation)
 
     SCHEMA_OPTION = 'scheming.dataset_schemas'
     FALLBACK_OPTION = 'scheming.dataset_fallback'
@@ -360,12 +362,13 @@ def expand_form_composite(data, fieldnames):
 
 
 class SchemingGroupsPlugin(p.SingletonPlugin, _GroupOrganizationMixin,
-                           DefaultGroupForm, _SchemingMixin):
+                           DefaultGroupForm, _SchemingMixin, DefaultTranslation):
     p.implements(p.IConfigurer)
     p.implements(p.ITemplateHelpers)
     p.implements(p.IGroupForm, inherit=True)
     p.implements(p.IActions)
     p.implements(p.IValidators)
+    p.implements(p.ITranslation)
 
     SCHEMA_OPTION = 'scheming.group_schemas'
     FALLBACK_OPTION = 'scheming.group_fallback'
@@ -390,12 +393,13 @@ class SchemingGroupsPlugin(p.SingletonPlugin, _GroupOrganizationMixin,
 
 
 class SchemingOrganizationsPlugin(p.SingletonPlugin, _GroupOrganizationMixin,
-                                  DefaultOrganizationForm, _SchemingMixin):
+                                  DefaultOrganizationForm, _SchemingMixin, DefaultTranslation):
     p.implements(p.IConfigurer)
     p.implements(p.ITemplateHelpers)
     p.implements(p.IGroupForm, inherit=True)
     p.implements(p.IActions)
     p.implements(p.IValidators)
+    p.implements(p.ITranslation)
 
     SCHEMA_OPTION = 'scheming.organization_schemas'
     FALLBACK_OPTION = 'scheming.organization_fallback'

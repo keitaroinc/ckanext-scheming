@@ -10,6 +10,7 @@ from jinja2 import Environment
 from ckantoolkit import config, _
 
 from ckanapi import LocalCKAN, NotFound, NotAuthorized
+from ckan.lib import base
 
 all_helpers = {}
 
