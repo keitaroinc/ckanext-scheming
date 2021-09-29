@@ -6,7 +6,14 @@
   {% block organization_option scoped %}
     <option value="{{ organization.id }}"{%
       if selected_org %} selected="selected"{% endif
-      %}>{{ h.datagovmk_get_org_title(organization.id) or organization.display_name }}</option>
+      %}>
+      {% if h.datagovmk_get_org_title is defined %}
+        {{ h.datagovmk_get_org_title(organization.id) or organization.display_name }}
+      {% else %}
+        {{ organization.display_name }}
+      {% endif %}
+     
+    </option>
   {% endblock %}
 {% endmacro %}
 
