@@ -7,7 +7,7 @@
     <option value="{{ organization.id }}"{%
       if selected_org %} selected="selected"{% endif
       %}>
-      {% if h.datagovmk_get_org_title is defined %}
+      {% if datagovmk_get_org_title is defined %}
         {{ h.datagovmk_get_org_title(organization.id) or organization.display_name }}
       {% else %}
         {{ organization.display_name }}
