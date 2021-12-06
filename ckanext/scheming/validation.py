@@ -559,7 +559,10 @@ def repeating_text_output(value):
         return json.loads(value)
     except ValueError:
         return [value]
+
+
 @scheming_validator
+@register_validator
 def scheming_catalog_exists(field, schema):
     """ Only allow one catalog per organization. """
     def validator(key, data, errors, context):
