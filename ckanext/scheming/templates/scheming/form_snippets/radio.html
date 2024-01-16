@@ -1,5 +1,6 @@
 {% import 'macros/form.html' as form %}
 
+
 {%- set options=[] -%}
 {%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
 {%- if not h.scheming_field_required(field) or
@@ -27,7 +28,7 @@
     classes=field.classes if 'classes' in field else ['control-medium'],
     error=errors[field.field_name],
     is_required=h.scheming_field_required(field)) -%}
-    <fieldset class="radio-group">
+    <fieldset class="radio-group" id="field-{{field.field_name}}">
       {%- for c in field.choices -%}
         <div>
           <label for="field-{{ field.field_name }}-{{ c.value }}">
@@ -43,3 +44,56 @@
     </fieldset>
     {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 {%- endcall -%}
+
+
+
+<script>
+  function removeVersionField(){
+    var txcVersionField = document.getElementById('field-txc_version');
+    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
+    txcVersionField.style.display = 'none';
+    transXChangeVersionElement.style.display = 'none';
+
+
+  }
+  function toggleFields() {
+    console.log("--------------")
+
+    // Set the display property to "none" for these 3 elements. 
+    // We are getting them by selector which is not very feasable, but it is the only option for now.
+    var statusElement = document.querySelector("#dataset-edit > div:nth-child(14)");
+    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
+    var metadataValidationElement = document.querySelector("#dataset-edit > div:nth-child(17)");
+
+
+    var selectedOption = document.getElementById('field-type_of_dataset').value;
+    var statusField = document.getElementById('field-status');
+    var txcVersionField = document.getElementById('field-txc_version');
+    var metadataValidationField = document.getElementById('field-metadata_validation');
+    if (selectedOption === 'txc_data') {
+      // No fields to hide for TransXChange Data
+      statusField.style.display = 'block';
+      txcVersionField.style.display = 'none';
+      metadataValidationField.style.display = 'block';
+
+      statusElement.style.display = 'block';
+      transXChangeVersionElement.style.display = 'none';
+      metadataValidationElement.style.display = 'block';
+
+    } else if (selectedOption === 'financial_data') {
+      statusField.style.display = 'none';
+      txcVersionField.style.display = 'none';
+      metadataValidationField.style.display = 'none';
+      
+      
+     
+      statusElement.style.display = "none";
+      transXChangeVersionElement.style.display = "none";
+      metadataValidationElement.style.display = "none";
+
+    }
+  }
+  document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
+  removeVersionField();
+  toggleFields();
+</script>
