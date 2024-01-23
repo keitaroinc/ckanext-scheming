@@ -50,12 +50,12 @@
 <script>
   function removeVersionField(){
     var txcVersionField = document.getElementById('field-txc_version');
-    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
+    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(15)");
     txcVersionField.style.display = 'none';
     transXChangeVersionElement.style.display = 'none';
-
-
   }
+
+ 
   function toggleFields() {
     console.log("--------------")
 
@@ -64,32 +64,40 @@
     var statusElement = document.querySelector("#dataset-edit > div:nth-child(14)");
     var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
     var metadataValidationElement = document.querySelector("#dataset-edit > div:nth-child(17)");
+    var visibleToLAElement = document.querySelector("#dataset-edit > div:nth-child(18)");
 
 
     var selectedOption = document.getElementById('field-type_of_dataset').value;
     var statusField = document.getElementById('field-status');
     var txcVersionField = document.getElementById('field-txc_version');
     var metadataValidationField = document.getElementById('field-metadata_validation');
+    var visibleToLAField = document.querySelector("#dataset-edit > div:nth-child(18) > div");
     if (selectedOption === 'txc_data') {
       // No fields to hide for TransXChange Data
       statusField.style.display = 'block';
       txcVersionField.style.display = 'none';
       metadataValidationField.style.display = 'block';
+      visibleToLAElement.style.display = 'block';
+
 
       statusElement.style.display = 'block';
       transXChangeVersionElement.style.display = 'none';
       metadataValidationElement.style.display = 'block';
+      visibleToLAField.style.display = 'block';
+
 
     } else if (selectedOption === 'financial_data') {
-      statusField.style.display = 'none';
+      // statusField.style.display = 'none';
       txcVersionField.style.display = 'none';
       metadataValidationField.style.display = 'none';
+      visibleToLAElement.style.display = 'none';
       
       
      
-      statusElement.style.display = "none";
+      // statusElement.style.display = "none";
       transXChangeVersionElement.style.display = "none";
       metadataValidationElement.style.display = "none";
+      visibleToLAField.style.display = 'none';
 
     }
   }
