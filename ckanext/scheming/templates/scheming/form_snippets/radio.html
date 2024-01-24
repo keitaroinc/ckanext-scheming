@@ -48,14 +48,24 @@
 
 
 <script>
+  
+  function disableDropdown(){
+    var dropdown = document.getElementById('field-type_of_dataset');
+    dropdown.disabled = true;
+
+  }
+
   function removeVersionField(){
     var txcVersionField = document.getElementById('field-txc_version');
     var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(15)");
+    var wholeField = document.querySelector("#dataset-edit > div:nth-child(16)");
+
+    wholeField.style.display = 'none';
     txcVersionField.style.display = 'none';
     transXChangeVersionElement.style.display = 'none';
   }
 
- 
+
   function toggleFields() {
     console.log("--------------")
 
@@ -64,14 +74,14 @@
     var statusElement = document.querySelector("#dataset-edit > div:nth-child(14)");
     var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
     var metadataValidationElement = document.querySelector("#dataset-edit > div:nth-child(17)");
-    var visibleToLAElement = document.querySelector("#dataset-edit > div:nth-child(18)");
+    var visibleToLAElement = document.querySelector("#dataset-edit > div:nth-child(19)");
 
 
     var selectedOption = document.getElementById('field-type_of_dataset').value;
     var statusField = document.getElementById('field-status');
     var txcVersionField = document.getElementById('field-txc_version');
     var metadataValidationField = document.getElementById('field-metadata_validation');
-    var visibleToLAField = document.querySelector("#dataset-edit > div:nth-child(18) > div");
+    var visibleToLAField = document.querySelector("#dataset-edit > div:nth-child(19)");
     if (selectedOption === 'txc_data') {
       // No fields to hide for TransXChange Data
       statusField.style.display = 'block';
@@ -100,8 +110,23 @@
       visibleToLAField.style.display = 'none';
 
     }
+    
   }
-  document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
-  removeVersionField();
-  toggleFields();
+  
+  function dataRender(){
+    var selectedOption = document.getElementById('field-type_of_dataset').value;
+
+      if(selectedOption === null || selectedOption === ''){
+        document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
+        removeVersionField();
+        toggleFields();
+      }
+      else {
+        disableDropdown();
+        removeVersionField();
+      }
+  }
+
+  dataRender();
+
 </script>
