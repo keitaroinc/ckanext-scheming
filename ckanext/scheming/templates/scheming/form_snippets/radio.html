@@ -55,15 +55,15 @@
 
   }
 
-  function removeVersionField(){
-    var txcVersionField = document.getElementById('field-txc_version');
-    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(15)");
-    var wholeField = document.querySelector("#dataset-edit > div:nth-child(16)");
+  // function removeVersionField(){
+  //   var txcVersionField = document.getElementById('field-txc_version');
+  //   var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(15)");
+  //   var wholeField = document.querySelector("#dataset-edit > div:nth-child(16)");
 
-    wholeField.style.display = 'none';
-    txcVersionField.style.display = 'none';
-    transXChangeVersionElement.style.display = 'none';
-  }
+  //   wholeField.style.display = 'none';
+  //   txcVersionField.style.display = 'none';
+  //   transXChangeVersionElement.style.display = 'none';
+  // }
 
 
   function toggleFields() {
@@ -85,13 +85,13 @@
     if (selectedOption === 'txc_data') {
       // No fields to hide for TransXChange Data
       statusField.style.display = 'block';
-      txcVersionField.style.display = 'none';
+      txcVersionField.style.display = 'block';
       metadataValidationField.style.display = 'block';
       visibleToLAElement.style.display = 'block';
 
 
       statusElement.style.display = 'block';
-      transXChangeVersionElement.style.display = 'none';
+      transXChangeVersionElement.style.display = 'block';
       metadataValidationElement.style.display = 'block';
       visibleToLAField.style.display = 'block';
 
@@ -118,12 +118,12 @@
 
       if(selectedOption === null || selectedOption === ''){
         document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
-        removeVersionField();
+        //removeVersionField();
         toggleFields();
       }
       else {
         disableDropdown();
-        removeVersionField();
+        //removeVersionField();
       }
   }
 

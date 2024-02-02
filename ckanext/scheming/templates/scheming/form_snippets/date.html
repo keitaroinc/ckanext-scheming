@@ -14,3 +14,24 @@
 %}
     {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 {% endcall %}
+
+
+<script>
+
+    document.getElementById("field-dataset_start_date").addEventListener("input", updateEndDateMin);
+    
+    function updateEndDateMin() {
+        // Get the value of the start date input
+        const startDateInput = document.getElementById("field-dataset_start_date");
+        const startDateValue = startDateInput.value;
+  
+        // Set the minimum allowed value for the end date input
+        const endDateInput = document.getElementById("field-dataset_end_date");
+        endDateInput.min = startDateValue;
+  
+        // Enable the end date input
+        endDateInput.disabled = false;
+    }
+
+
+  </script>
