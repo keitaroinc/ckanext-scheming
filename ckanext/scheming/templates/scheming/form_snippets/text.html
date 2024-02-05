@@ -14,3 +14,14 @@
 %}
     {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 {% endcall %}
+
+<script>
+    function disableFileId() {
+        var file_id = document.getElementById('field-id');
+        if (file_id !== null && file_id.value !== '') {
+            file_id.disabled = true;
+        }
+    }
+
+    disableFileId();
+</script>

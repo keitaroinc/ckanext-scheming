@@ -48,85 +48,30 @@
 
 
 <script>
-  
-  function disableDropdown(){
-    var dropdown = document.getElementById('field-type_of_dataset');
-    dropdown.disabled = true;
-
-  }
-
-  // function removeVersionField(){
-  //   var txcVersionField = document.getElementById('field-txc_version');
-  //   var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(15)");
-  //   var wholeField = document.querySelector("#dataset-edit > div:nth-child(16)");
-
-  //   wholeField.style.display = 'none';
-  //   txcVersionField.style.display = 'none';
-  //   transXChangeVersionElement.style.display = 'none';
-  // }
-
-
   function toggleFields() {
-    console.log("--------------")
-
-    // Set the display property to "none" for these 3 elements. 
-    // We are getting them by selector which is not very feasable, but it is the only option for now.
-    var statusElement = document.querySelector("#dataset-edit > div:nth-child(14)");
-    var transXChangeVersionElement = document.querySelector("#dataset-edit > div:nth-child(16)");
-    var metadataValidationElement = document.querySelector("#dataset-edit > div:nth-child(17)");
-    var visibleToLAElement = document.querySelector("#dataset-edit > div:nth-child(19)");
-
-
-    var selectedOption = document.getElementById('field-type_of_dataset').value;
-    var statusField = document.getElementById('field-status');
-    var txcVersionField = document.getElementById('field-txc_version');
-    var metadataValidationField = document.getElementById('field-metadata_validation');
-    var visibleToLAField = document.querySelector("#dataset-edit > div:nth-child(19)");
-    if (selectedOption === 'txc_data') {
-      // No fields to hide for TransXChange Data
-      statusField.style.display = 'block';
-      txcVersionField.style.display = 'block';
-      metadataValidationField.style.display = 'block';
-      visibleToLAElement.style.display = 'block';
+      var selectedOption = document.getElementById('field-type_of_dataset').value;
+  
+      // Show all fields for the selected option
+      var fields = document.querySelectorAll(".form-group");
+      fields.forEach(function (field) {
+          field.style.display = 'block';
+      });
+  
+      // Customize visibility based on the selected option
+      if (selectedOption === 'financial_data') {
+          // Hide specific fields for Financial Data 
+          document.querySelector("#dataset-edit > div:nth-child(12)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(13)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(19)").style.display = 'none';
+          document.querySelector("#dataset-edit > div:nth-child(18)").style.display = 'none';
 
 
-      statusElement.style.display = 'block';
-      transXChangeVersionElement.style.display = 'block';
-      metadataValidationElement.style.display = 'block';
-      visibleToLAField.style.display = 'block';
+      }
 
-
-    } else if (selectedOption === 'financial_data') {
-      // statusField.style.display = 'none';
-      txcVersionField.style.display = 'none';
-      metadataValidationField.style.display = 'none';
-      visibleToLAElement.style.display = 'none';
-      
-      
-     
-      // statusElement.style.display = "none";
-      transXChangeVersionElement.style.display = "none";
-      metadataValidationElement.style.display = "none";
-      visibleToLAField.style.display = 'none';
-
-    }
-    
   }
   
-  function dataRender(){
-    var selectedOption = document.getElementById('field-type_of_dataset').value;
-
-      if(selectedOption === null || selectedOption === ''){
-        document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
-        //removeVersionField();
-        toggleFields();
-      }
-      else {
-        disableDropdown();
-        //removeVersionField();
-      }
-  }
-
-  dataRender();
-
-</script>
+  toggleFields();
+  
+  document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
+  </script>
