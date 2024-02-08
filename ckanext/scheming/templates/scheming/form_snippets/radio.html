@@ -48,30 +48,43 @@
 
 
 <script>
-  function toggleFields() {
-      var selectedOption = document.getElementById('field-type_of_dataset').value;
   
+  function toggleFields() {
       // Show all fields for the selected option
       var fields = document.querySelectorAll(".form-group");
       fields.forEach(function (field) {
           field.style.display = 'block';
       });
   
-      // Customize visibility based on the selected option
-      if (selectedOption === 'financial_data') {
+        // if this fileName is null, then it is create dataset page 
+        // in other hand it is update dataset page
+      var fileName = document.getElementById('field-file_name').value;
+
+
+      if(fileName === null || fileName === ''){
+
+         // Customize visibility based on the selected option
+         if (selectedOption === 'financial_data') {
           // Hide specific fields for Financial Data 
-          document.querySelector("#dataset-edit > div:nth-child(12)").style.display = 'none';  
-          document.querySelector("#dataset-edit > div:nth-child(13)").style.display = 'none';  
-          document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'none';  
-          document.querySelector("#dataset-edit > div:nth-child(19)").style.display = 'none';
-          document.querySelector("#dataset-edit > div:nth-child(18)").style.display = 'none';
-
-
+          document.querySelector("#dataset-edit > div:nth-child(16)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(18)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(22)").style.display = 'none';  
+          document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'none';
+          document.querySelector("#dataset-edit > div:nth-child(25)").style.display = 'none';
       }
-
+    }
+   
+    else{
+           // Customize visibility based on the selected option
+      if (selectedOption === 'financial_data') {
+        // Hide specific fields for Financial Data 
+        document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'block';  
+        document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'block';  
+        document.querySelector("#dataset-edit > div:nth-child(21)").style.display = 'block';  
+        document.querySelector("#dataset-edit > div:nth-child(22)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(24)").style.display = 'block';
+      }
+    }
   }
-  
-  toggleFields();
-  
   document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
-  </script>
+</script>
