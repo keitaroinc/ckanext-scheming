@@ -44,7 +44,6 @@
   {%- block pkg_dict_created -%}
   <tr>
     <th scope="row">{{ _('Upload dataset') }}</th>
-    {{pkg_dict.metadata_created}}
     <td>{{ h.render_datetime(pkg_dict.metadata_created, date_format = "%B %d, %Y %H:%M:%S") or _('unknown') }}</td>
   </tr>
   {%- endblock -%}
