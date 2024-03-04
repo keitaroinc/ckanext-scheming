@@ -73,7 +73,6 @@
          if (selectedOption === 'financial_data') {
           // Hide specific fields for Financial Data 
           document.querySelector("#dataset-edit > div:nth-child(12)").style.display = 'none';
-          document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'block';  
           document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'none';  
           document.querySelector("#dataset-edit > div:nth-child(19)").style.display = 'none';
           document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'none';
@@ -87,27 +86,56 @@
       document.getElementById('field-type_of_dataset').disabled=true;
 
       if (selectedOption === 'txc_data'){
-        document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'none';  
+        document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'none'; // create a dataset
+        document.querySelector("#dataset-edit > div:nth-child(11)").style.display = 'none'; // edit dataset
+
+
+        document.querySelector("#dataset-edit > div:nth-child(12)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'block';  
+        document.querySelector("#dataset-edit > div:nth-child(19)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(24)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(26)").style.display = 'block';
+
+
+        document.querySelector("#dataset-edit > div:nth-child(11)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(16)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(18)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(22)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'block';
+        document.querySelector("#dataset-edit > div:nth-child(25)").style.display = 'block';
+
+         
 
       }
-      if (selectedOption === 'financial_data'){
+
+
+      // Customize visibility based on the selected option
+      if (selectedOption === 'financial_data') {
+        // Hide specific fields for Financial Data 
         document.querySelector("#dataset-edit > div:nth-child(12)").style.display = 'none';
-        document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'block';    
         document.querySelector("#dataset-edit > div:nth-child(17)").style.display = 'none';  
         document.querySelector("#dataset-edit > div:nth-child(19)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(24)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(26)").style.display = 'none';
-        
+
+
         document.querySelector("#dataset-edit > div:nth-child(11)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(16)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(18)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(22)").style.display = 'none';
+        document.querySelector("#dataset-edit > div:nth-child(23)").style.display = 'none';
         document.querySelector("#dataset-edit > div:nth-child(25)").style.display = 'none';
-      }
+
+        document.querySelector("#dataset-edit > div:nth-child(15)").style.display = 'block'; // create a dataset
+        document.querySelector("#dataset-edit > div:nth-child(11)").style.display = 'block'; // edit dataset
+         
+
 
     } 
   }
+}
   toggleFields();
   document.getElementById('field-author').disabled = true;
 
