@@ -46,6 +46,10 @@
     <th scope="row">{{ _('Upload dataset') }}</th>
     <td>{{ h.render_datetime(pkg_dict.metadata_created, date_format = "%B %d, %Y %H:%M:%S") or _('unknown') }}</td>
   </tr>
+  <tr>
+    <th scope="row">{{ _('National operator code') }}</th>
+    <td>{{ h.get_national_operator_code(pkg_dict.owner_org) }}</td>
+  </tr>
   {%- endblock -%}
   {% if pkg_dict.extras %}
     {% for extra in pkg_dict.extras %}
