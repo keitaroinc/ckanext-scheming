@@ -66,15 +66,15 @@
 
          // Customize visibility based on the selected option
          if (selectedOption === 'txc_data'){
-          document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(2)").style.display = 'none';  
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div.module-content > form.dataset-form > div:nth-child(3 of .form-group)").style.display = 'none';
 
          }
          if (selectedOption === 'financial_data') {
-          // Hide specific fields for Financial Data 
-          document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(4))").style.display = 'none';
-          document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(6))").style.display = 'none';  
-          document.querySelector("#content > div.row.wrapper > div > section > div.form-group.control-medium.control-select").style.display = 'none';
-          document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(11)").style.display = 'none';
+          // Hide specific fields for Financial Data
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(2 of .form-group.control-medium)").style.display = 'none';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(3 of .form-group.control-medium)").style.display = 'none';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(5 of .form-group.control-medium)").style.display = 'none';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(6 of .form-group.control-medium)").style.display = 'none';
 
         }
     }
@@ -82,26 +82,26 @@
       document.getElementById('field-type_of_dataset').disabled=true;
 
       if (selectedOption === 'txc_data'){
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(2)").style.display = 'none'; // create a dataset
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div.module-content > form.dataset-form > div:nth-child(3 of .form-group)").style.display = 'none'; // create a dataset
     
 
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(4))").style.display = 'block';
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(6))").style.display = 'block';  
-        document.querySelector("#content > div.row.wrapper > div > section > div.form-group.control-medium.control-select").style.display = 'block';
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(11)").style.display = 'block';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(2 of .form-group.control-medium)").style.display = 'block';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(3 of .form-group.control-medium)").style.display = 'block';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(5 of .form-group.control-medium)").style.display = 'block';
+          document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(6 of .form-group.control-medium)").style.display = 'block';
 
 
       }
       // Customize visibility based on the selected option
       if (selectedOption === 'financial_data') {
         // Hide specific fields for Financial Data 
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(4))").style.display = 'none';
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(6))").style.display = 'none';  
-        document.querySelector("#content > div.row.wrapper > div > section > div.form-group.control-medium.control-select").style.display = 'none';
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(11)").style.display = 'none';
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(2 of .form-group.control-medium)").style.display = 'none';
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(3 of .form-group.control-medium)").style.display = 'none';
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(5 of .form-group.control-medium)").style.display = 'none';
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div:nth-child(6 of .form-group.control-medium)").style.display = 'none';
  
 
-        document.querySelector("#content > div.row.wrapper > div > section > div:nth-child(2)").style.display = 'block'; // create a dataset
+        document.querySelector("#content > div.row.wrapper > div.primary > section.module > div.module-content > form.dataset-form > div:nth-child(3 of .form-group)").style.display = 'block'; // create a dataset
         
 
     } 
