@@ -50,6 +50,10 @@
     <th scope="row">{{ _('National operator code') }}</th>
     <td>{{ h.get_national_operator_code(pkg_dict.owner_org) }}</td>
   </tr>
+  <tr>
+    <th scope="row">{{ _('Local Authorities visibility') }}</th>
+    <td>{{ h.get_local_authorities() }}</td>
+  </tr>
   {%- endblock -%}
   {% if pkg_dict.extras %}
     {% for extra in pkg_dict.extras %}
