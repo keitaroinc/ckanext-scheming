@@ -1,0 +1,41 @@
+{% extends 'package/edit_base.html' %}
+
+{% block primary_content_inner %}
+    {% block form %}
+        {{- h.snippet(form_snippet, pkg_dict=pkg_dict, **form_vars) -}}
+    {% endblock %}
+    
+    <script>
+        function toggleFields() {
+            var selectedOption = document.getElementById('field-type_of_dataset').value;
+
+            // Show all fields for the selected option
+            var fields = document.querySelectorAll(".form-group");
+            fields.forEach(function (field) {
+                field.style.display = 'block';
+            });
+
+            // Check if it's the create or update dataset page
+            var fileId = document.getElementById('field-id').value;
+
+            if (fileId !== null && fileId !== '') {
+                // Customize visibility based on the selected option
+                if (selectedOption === 'txc_data') {
+                    document.querySelector("#content > div.row.wrapper > div.primary > article.module > div:nth-child(1 of .form-group.control-medium)").style.display = 'none';
+                }
+
+                if (selectedOption === 'financial_data') {
+                    // Hide specific fields for Financial Data
+                    document.querySelector("#content > div.row.wrapper > div.primary > article.module > div:nth-child(2 of .form-group.control-medium)").style.display = 'none';
+                    document.querySelector("#content > div.row.wrapper > div.primary > article.module > div:nth-child(3 of .form-group.control-medium)").style.display = 'none';
+                    document.querySelector("#content > div.row.wrapper > div.primary > article.module > div:nth-child(5 of .form-group.control-medium)").style.display = 'none';
+                    document.querySelector("#content > div.row.wrapper > div.primary > article.module > div:nth-child(6 of .form-group.control-medium)").style.display = 'none';
+                }
+            }
+        }
+
+        // Run the function on page load and when the dropdown changes
+        document.addEventListener('DOMContentLoaded', toggleFields);
+        document.getElementById('field-type_of_dataset').addEventListener('change', toggleFields);
+    </script>
+{% endblock %}
